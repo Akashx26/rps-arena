@@ -1,97 +1,62 @@
 
 # 🎮 RPS Arena — Rock Paper Scissors
 
-A modern, interactive Rock Paper Scissors game built using HTML, CSS and JavaScript.
+A responsive, interactive Rock Paper Scissors game built using HTML, CSS and JavaScript.
 
-## 🚀 Features
+## ✨ Features
 
-- Dark neon gaming interface
-- Best of 5 game mode
-- Endless game mode
-- Player versus computer
-- Random computer move generation
-- Animated countdown
-- Smooth hand animations
-- Dynamic scoreboard
+- Player vs Computer gameplay
+- Best of 3 mode
+- Best of 5 mode
+- Endless mode
+- Animated Rock, Paper and Scissors reveal
+- Scoreboard and match results
 - Sound effects with mute option
-- Win, lose and draw detection
-- Match completion screen
-- Reset and play again
+- Draws do not consume a round or award points
 - Keyboard shortcuts
-- Responsive mobile design
+- Responsive mobile-friendly design
 
 ## 🛠️ Technologies Used
 
-| Technology | Purpose |
-|---|---|
-| HTML5 | Game structure |
-| CSS3 | Styling and animations |
-| JavaScript | Game logic and interactions |
-| Web Audio API | Sound effects |
+- HTML5
+- CSS3
+- JavaScript
+- Web Audio API
 
-## 📂 Project Structure
-
-rock-paper-scissors/
-│
-├── index.html
-├── style.css
-├── script.js
-└── README.md
-
-## 💻 How to Run
+## 🚀 How to Run
 
 1. Clone or download this repository.
-2. Open the project folder.
-3. Open index.html in your browser.
-4. Select a game mode.
-5. Start playing!
+2. Open the project folder in VS Code.
+3. Open `index.html`.
+4. Right-click and select **Open with Live Server**.
 
-No installation or backend server is required.
+No installation or backend required.
 
-## 🎯 Game Modes
-
-### Best of 5
-
-- Maximum 5 rounds.
-- First player to reach 3 wins wins the match.
-- If neither reaches 3 wins after 5 rounds, the higher score wins.
-- Draws count as rounds but do not increase scores.
-
-### Endless
-
-- Unlimited rounds.
-- No automatic match completion.
-- Scores continue until the player resets the game.
-
-## ⌨️ Keyboard Shortcuts
+## 🎮 Keyboard Shortcuts
 
 | Key | Action |
 |---|---|
 | 1 | Rock |
 | 2 | Paper |
 | 3 | Scissors |
-| R | Reset |
-| Escape | Restart after match completion |
+| R | Reset game |
+| Esc | Close match result by resetting |
 
-## 📖 Rules
+## 📁 Project Structure
 
-- Rock beats Scissors.
-- Scissors beats Paper.
-- Paper beats Rock.
-- Identical moves result in a draw.
-
-## 🌐 Deployment
-
-This project can be deployed using:
-
-- GitHub Pages
-- Netlify
-- Vercel
+```text
+rps-arena/
+├── index.html
+├── style.css
+├── script.js
+├── README.md
+└── .gitignore
+```
 
 ## 👨‍💻 Author
 
-Created as a learning project to practice front-end web development.
+Akash
 
-## 📜 License
+## 📄 License
 
-This project is open source and available for learning and personal use.
+No license specified yet.
