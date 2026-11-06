@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090e1c">
+
+  <title>RPS Arena | Rock Paper Scissors</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <main class="app-shell">
+
+    <header class="topbar">
+      <a class="brand" href="#">
+        <span class="brand-mark">R</span>
+        <span>RPS<span class="brand-muted">ARENA</span></span>
+      </a>
+
+      <div class="best-of">
+        <span class="live-dot"></span>
+        PLAYER VS COMPUTER
+      </div>
+
+      <button
+        class="icon-button"
+        id="soundToggle"
+        type="button"
+        aria-label="Mute sound"
+        aria-pressed="true"
+        title="Toggle sound"
+      >
+        <svg class="sound-on" viewBox="0 0 24 24">
+          <path d="M4 9v6h4l5 4V5L8 9H4Z"/>
+          <path d="M16 9a5 5 0 0 1 0 6M18.5 6.5a9 9 0 0 1 0 11"/>
+        </svg>
+
+        <svg class="sound-off" viewBox="0 0 24 24">
+          <path d="M4 9v6h4l5 4V5L8 9H4Z"/>
+          <path d="m17 9 5 6m0-6-5 6"/>
+        </svg>
+      </button>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">THE CLASSIC SHOWDOWN</p>
+
+      <h1>
+        Rock. Paper.<br>
+        <span>Scissors.</span>
+      </h1>
+
+      <p class="intro-copy">
+        Make your move. Outsmart the machine.<br>
+        Claim your place in the arena.
+      </p>
+    </section>
+
+    <!-- GAME MODE SELECTOR -->
+    <section class="mode-selector">
+
+      <button
+        class="mode-button"
+        data-mode="best3"
+        type="button"
+      >
+        <span class="mode-icon">🥉</span>
+        <span>
+          <strong>BEST OF 3</strong>
+          <small>First to 2 wins</small>
+        </span>
+      </button>
+
+      <button
+        class="mode-button active"
+        data-mode="best5"
+        type="button"
+      >
+        <span class="mode-icon">🏆</span>
+        <span>
+          <strong>BEST OF 5</strong>
+          <small>First to 3 wins</small>
+        </span>
+      </button>
+
+      <button
+        class="mode-button"
+        data-mode="endless"
+        type="button"
+      >
+        <span class="mode-icon">∞</span>
+        <span>
+          <strong>ENDLESS</strong>
+          <small>Unlimited rounds</small>
+        </span>
+      </button>
+
+    </section>
+
+    <!-- SCOREBOARD -->
+    <section class="scoreboard">
+
+      <div class="score-side player-score">
+        <div class="score-label">
+          <span class="player-indicator"></span>
+          YOU
+        </div>
+
+        <div class="score-number" id="playerScore">0</div>
+      </div>
+
+      <div class="score-center">
+        <span class="score-caption">ROUND</span>
+        <strong id="roundNumber">01</strong>
+        <span class="score-total" id="roundTotal">/ 05</span>
+      </div>
+
+      <div class="score-side cpu-score">
+        <div class="score-label">
+          CPU
+          <span class="cpu-indicator"></span>
+        </div>
+
+        <div class="score-number" id="computerScore">0</div>
+      </div>
+
+      <div class="score-progress" id="scoreProgress">
+        <span id="roundProgress"></span>
+      </div>
+
+    </section>
+
+    <!-- BATTLE AREA -->
+    <section class="battle-card">
+
+      <div class="battle-heading">
+        <span>THE BATTLEFIELD</span>
+
+        <span class="status-pill" id="statusPill">
+          <span class="status-dot"></span>
+          YOUR MOVE
+        </span>
+      </div>
+
+      <div class="arena">
+
+        <div class="fighter">
+          <div class="fighter-name">YOU</div>
+
+          <div class="hand-stage" id="playerStage">
+            <div class="hand-orbit"></div>
+            <div class="hand-emoji" id="playerHand">✊</div>
+          </div>
+
+          <div class="move-caption" id="playerCaption">
+            READY TO PLAY
+          </div>
+        </div>
+
+        <div class="versus">
+          <span>VS</span>
+        </div>
+
+        <div class="fighter">
+          <div class="fighter-name">COMPUTER</div>
+
+          <div class="hand-stage" id="computerStage">
+            <div class="hand-orbit"></div>
+            <div class="hand-emoji" id="computerHand">✊</div>
+          </div>
+
+          <div class="move-caption" id="computerCaption">
+            WAITING...
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RESULT -->
+      <div class="result-area" aria-live="polite">
+        <div class="result-title" id="resultTitle">
+          Ready when you are
+        </div>
+
+        <p class="result-message" id="resultMessage">
+          Choose your move below to start the game.
+        </p>
+      </div>
+
+      <!-- PLAYER CHOICES -->
+      <div class="choice-area">
+        <p class="choice-label">CHOOSE YOUR MOVE</p>
+
+        <div class="choices">
+
+          <button class="choice-button" data-move="rock" type="button">
+            <span class="choice-icon">✊</span>
+            <span class="choice-name">ROCK</span>
+            <span class="choice-hint">Crushes scissors</span>
+          </button>
+
+          <button class="choice-button" data-move="paper" type="button">
+            <span class="choice-icon">✋</span>
+            <span class="choice-name">PAPER</span>
+            <span class="choice-hint">Covers rock</span>
+          </button>
+
+          <button class="choice-button" data-move="scissors" type="button">
+            <span class="choice-icon">✌️</span>
+            <span class="choice-name">SCISSORS</span>
+            <span class="choice-hint">Cuts paper</span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- FOOTER CONTROLS -->
+      <div class="battle-footer">
+        <span>
+          <kbd>1</kbd>
+          <kbd>2</kbd>
+          <kbd>3</kbd>
+          Quick select
+        </span>
+
+        <button class="text-button" id="resetButton" type="button">
+          ↻ RESET GAME
+        </button>
+      </div>
+
+    </section>
+
+    <footer class="footer">
+      <span>BUILT FOR THE LOVE OF THE GAME</span>
+
+      <span>
+        ✦
+        <span id="footerStatus">MAY THE BEST HAND WIN</span>
+      </span>
+    </footer>
+
+  </main>
+
+  <!-- MATCH RESULT MODAL -->
+  <div class="modal-backdrop" id="endModal" hidden>
+    <section
+      class="end-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="endTitle"
+    >
+
+      <div class="trophy" id="endTrophy">🏆</div>
+
+      <p class="eyebrow">MATCH COMPLETE</p>
+
+      <h2 id="endTitle">Victory is yours!</h2>
+
+      <p id="endMessage">You won the match.</p>
+
+      <div class="final-score">
+        <span>
+          YOU
+          <strong id="finalPlayerScore">0</strong>
+        </span>
+
+        <i>—</i>
+
+        <span>
+          CPU
+          <strong id="finalComputerScore">0</strong>
+        </span>
+      </div>
+
+      <button class="primary-button" id="playAgainButton" type="button">
+        PLAY AGAIN <span>↗</span>
+      </button>
+
+    </section>
+  </div>
+
+</body>
+</html>
