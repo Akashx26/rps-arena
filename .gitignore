@@ -1,4 +1,7 @@
 
+# Report folder
+Report/
+
 # Dependencies
 node_modules/
 
@@ -11,7 +14,7 @@ node_modules/
 Thumbs.db
 desktop.ini
 
-# Editor settings
+# VS Code settings
 .vscode/
 
 # Logs
